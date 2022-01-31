@@ -8,6 +8,6 @@ class PostController extends Controller
 {
     public function index()
     {
-        return view('welcome');
+        return view("index", ["name" => "<u>Anderson</u>", "lastname" => "<u>Pinheiro</u>"]);
     }   
 }
