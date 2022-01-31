@@ -13,7 +13,7 @@ class CreateTodo extends Migration
             Schema::create('todo', function (Blueprint $table) {
                 $table->id();
                 $table->string('name', 100);
-                $table->boolean('complete')->default(false);
+                $table->string('title');
                 $table->timestamps();
                 //  $table->timestamps('createdat')->useCurrent();
                 //  $table->timestamps('updatedat')->useCurrent()->useCurrentOnUpdate();
