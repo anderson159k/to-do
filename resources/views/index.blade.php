@@ -1,1 +1,3 @@
-oi meu nome é {!! $name !!} e meu sobrenome é {!! $lastname !!}.
+<?php
+    return ("to-do\public\index.php")
+?>
