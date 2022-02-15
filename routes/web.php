@@ -1,16 +1,12 @@
 <?php
 
 use App\Http\Controllers\{
-    PostController
+    TodoController
 };
 
 use Illuminate\Support\Facades\Route;
 
+Route::get('/', [TodoController::class, 'index']);
 
-
-Route::get('/posts',  [PostController::class, 'index']);
-
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::post('/save-todo', [TodoController::class, 'store']);
 ?>

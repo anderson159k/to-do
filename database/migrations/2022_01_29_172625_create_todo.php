@@ -10,10 +10,11 @@ class CreateTodo extends Migration
     public function up()
     {
       // if (!Schema::hasTable('todo')){
-            Schema::create('todo', function (Blueprint $table) {
+            Schema::create('todos', function (Blueprint $table) {
                 $table->id();
                 $table->string('name', 100);
                 $table->string('title');
+                $table->boolean('complete');
                 $table->timestamps();
                 //  $table->timestamps('createdat')->useCurrent();
                 //  $table->timestamps('updatedat')->useCurrent()->useCurrentOnUpdate();
@@ -27,6 +28,6 @@ class CreateTodo extends Migration
 
     public function down()
     {
-        Schema::drop('todo');
+        Schema::drop('todos');
     }
 }

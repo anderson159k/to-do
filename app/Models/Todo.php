@@ -5,8 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Post extends Model
+class Todo extends Model
 {
     use HasFactory;
-    protected $fillable = ['todo'];
+    protected $fillable = [
+        'name',
+        'title',
+        'complete',
+    ];
 }
