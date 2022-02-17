@@ -3,54 +3,56 @@
 
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="bootstrap.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" crossorigin="anonymous" />
-
+    <link rel="stylesheet" type="text/css" href="bootstrap.css">
+   
     <title>To Do List</title>
 </head>
 
 <body>
+    <div class="todo">
 
-    <header>
-        <h1 style = "text-decoration: underline;color:rgb(91, 0, 131)">   To Do List</h1>
-    </header>
+            <h1 style = "text-decoration: underline;color:rgb(91, 0, 131)">To-Do List</h1>
 
-    <form method="post" action="/save-todo">
-        @csrf
-        <input class="todo-input" name="todo" type="text" placeholder="New task...">
+    </div>
+    <div class="position-absolute top-50 start-50 translate-middle">
+        <form method="post" action="/save-todo">
+            <div class="table-top">
+            @csrf
+            <input class="todo-input" name="todo" type="text" placeholder="New task...">
 
-        <button class="todo-button" type="submit">
-            <i class ="fas fa-plus-square"></i>
-        </button>
+            <button class="btn btn-outline-primary" type="submit">Enviar</button>
 
-        <div class="select">
-            <select name="todos" class="filter-todo">
-                <option value="all">All</option>
-                <option value="completed">Completed</option>
-                <option value="notcompleted">Not Complete</option>
-            </select>
-        </div> 
+        </form>
+            <div class="displai">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">situação</th>
+                        <th scope="col">name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                @foreach($todos as $todo)
+                    <tr>
+                    <td scope="col">
+                        @if($todo->complete == 1)
+                        Concluída
+                        @else
+                        Pendente
+                        @endif
+                    </td>
+                    <td scope="col">{{$todo->name}}</td>
+                    <td scope="col">
+                        <input name="check" type="checkbox">
 
-    </form>
-
-   
-        <table>
-            <tr>
-                <th>name</th>
-                <th>titulo</th>
-                <th>situação</th>
-            </tr>
-            @foreach($todos as $todo)
-            <tr>
-                <td>{{$todo->name}}</td>
-                <td>{{$todo->title}}</td>
-                <td>{{$todo->complete}}</td>
-            </tr>
-            @endforeach
-        </table>
-
-    
+                    </td>
+                    </tr>
+                @endforeach
+                </tbody>
+            </table>
+            </div>
+            </div>
+    </div>
 </body>
 </html>
