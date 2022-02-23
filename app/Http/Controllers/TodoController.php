@@ -10,7 +10,7 @@ class TodoController extends Controller
 {
     public function index()
     {
-        $todos=Todo::get();
+        $todos=Todo::orderByDesc("id")->get();
         return view("welcome", compact("todos"));
     }   
 
@@ -18,9 +18,26 @@ class TodoController extends Controller
         $data = $request->all();
         Todo::create([
             "name" => $data["todo"],
-            "title" => $data["todo"],
             "complete" => false
         ]);
         return redirect('/');
     }
+
+    public function show($id){
+        $todos = Todo::find($id);
+        return view('edit', ['task' => $todos]);
+    }
+
+
+    public function update(Request $request, $id){
+        $data = $request->all();
+        Todo::find($id)->update(["complete" => 1]);
+        return redirect('/');
+    }   
+
+    public function destroy($id){
+        Todo::findOrFail($id)->delete();
+
+        return redirect('/');
+    } 
 }
